@@ -1,0 +1,40 @@
+import java.awt.*;
+import java.util.ArrayList;
+
+public class PictureColors {
+    public static Color chooseAreaColor= new Color(238, 147, 147, 161);
+    public static Color backgroundColor = new Color(8, 34, 119);
+    public static Color mainColor = Color.BLACK;
+    public static Color startGrad= new Color(8, 34, 119);
+    public static Color endGrad= new Color(71, 213, 131);
+    public static ArrayList<Color> ringColor;
+    public static Color buttonColor = new Color(13, 26, 77);
+    public static Color panelColor = new Color(10, 21, 65);
+    public static Color fontColor = new Color(156, 178, 255);
+    public static Font fontButton =new Font("Arial", Font.BOLD, 20);
+
+
+
+    public static ArrayList<Color> createColors() {
+        ringColor = new ArrayList<Color>();
+        int rEnd = endGrad.getRed();
+        int gEnd = endGrad.getGreen();
+        int bEnd = endGrad.getBlue();
+
+        int rStart = startGrad.getRed();
+        int gStart = startGrad.getGreen();
+        int bStart = startGrad.getBlue();
+
+
+        int h=(int)PointArray.log2(Parameters.getCheckIterations());
+
+        for (int i = 0; i < h; i++) {
+
+            ringColor.add(new Color((rStart + i * (rEnd - rStart) / h), (gStart + i * (gEnd - gStart) / h), (bStart + i * (bEnd - bStart) / h)));
+        }
+
+        return ringColor;
+
+
+    }
+}
